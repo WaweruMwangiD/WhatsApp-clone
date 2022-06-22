@@ -10,7 +10,13 @@ const SidebarChats = ({addNewChat}) => {
     setSeed(Math.floor(Math.random() * 50 ))
   }, [])
 
-  const createChat = () =>{}
+  const createChat = () =>{
+    const roomName = prompt("Write some stuff!!!")
+
+    if(roomName){
+      // Crazy database stuff
+    }
+  }
 
   return !addNewChat ? (
     <div className='sidebarChat'>
@@ -21,8 +27,8 @@ const SidebarChats = ({addNewChat}) => {
       </div>
     </div>
   ) : (
-    <div onClick={createChat()} className='sidebarChat'>
-      <h1>Add new chat</h1>
+    <div onClick={createChat} className='sidebarChat'>
+      <h2>Add new chat</h2>
     </div>
   )
 }
