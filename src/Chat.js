@@ -5,10 +5,17 @@ import './Chat.css'
 
 const Chat = () => {
     const [seed, setSeed] = useState('')
+    const [input, setInput] = useState('')
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 50 ))
   }, [])
+
+  const sendMessage = (e) => {
+    e.preventDefault()
+    console.log("You typed>>>", input)
+    setInput("")
+}
   return (
     <div className='chat'>
         <div className='chat_header'>
@@ -31,7 +38,7 @@ const Chat = () => {
         
         </div>
         <div className='chat_body'>
-            <div className={`chat_message ${true && "chat_receiver"}`}>
+            <div className={`chat_message`}>
                 <span className='chat_name'>David Waweru</span>
                 <p>Hey there!!</p>
                 <span className='chat_timestamp'>
@@ -49,8 +56,8 @@ const Chat = () => {
         <div className='chat_footer'>
             <InsertEmoticonOutlined />
             <form>
-                <input type="text" />
-                <button>Send a message</button>
+                <input value={input} onChange={(e) => setInput(e.target.value)} type="text" placeholder='Type a message' />
+                <button onClick={sendMessage}>Send a message</button>
             </form>
             <Mic />
         
